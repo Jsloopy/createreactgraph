@@ -33,6 +33,7 @@ body{
     transition: transform 0.5s, filter 0.5s, color 1s ; 
     text-align: center;
     flex:1;
+    max-height: 100%
     }
 
   [class*="bar"]:hover{

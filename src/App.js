@@ -6,7 +6,6 @@ class App extends Component {
 state = {
 
  baseCurrency: "USD",
- country: "You Choose",
  rates:{},
  comparisons:[],
 
@@ -43,7 +42,7 @@ onSubmit = (ev) => {
 
   this.setState({baseCurrency: ev.target.value});
   console.log({baseCurrency: ev.target.value});
-  
+
   const url = "https://api.exchangeratesapi.io/latest?base="+ ev.target.value;
       // console.log(url)
   fetch(url)
@@ -58,27 +57,16 @@ onSubmit = (ev) => {
 
 };
 
-// onCountry = (ev) =>{
-//   this.setState({country:ev.target.value})
-//   const country= ev.target.value
-//   console.log(country)
-
-// };
 
 
 
-//   const url = 'http://api.openweathermap.org/data/2.5/weather?q=' +
-//     query + '&appid=0de82b6b4ba5d843dac44bbee4d02543';
-//   fetch(url)
-//     .then(response => response.json())
-//     .then(data => {
-//       console.log('receiving data', data);
+
 
 
 // Update statewith new data from the drop down menu
 
   comparisonRate(comparison) {
-   let height = (this.state.rates[comparison])*100
+   let height = 1/(this.state.rates[comparison])*100
    console.log(height)
    return height
 
@@ -112,7 +100,7 @@ onSubmit = (ev) => {
                  {
                 this.state.comparisons.map(comparison => {
                   return <div class="bar" style={{height: this.comparisonRate(comparison) + "%"}}> 
-                    {comparison + "= $" +  this.comparisonValues(comparison)}
+                    {"$" +  this.comparisonValues(comparison)+ comparison}
                   </div>
                 })
                 }
